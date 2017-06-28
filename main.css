@@ -142,5 +142,8 @@ body {
 }
 
 .flag {
-  background-color: green;
+  background-image: url('./img/flag.png');
+  background-position: center;
+  background-size: 25px;
+  background-repeat: no-repeat;
 }
