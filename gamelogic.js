@@ -185,7 +185,7 @@ Minesweeper.prototype.gameOver = function(selector) {
   });
   $('.face').removeClass('happy');
   $('.face').addClass('sad');
-
+  clearInterval(interval);
 };
 
 Minesweeper.prototype.winGame = function() {
