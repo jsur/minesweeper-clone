@@ -1,0 +1,132 @@
+body {
+  font-family: 'Arial'
+}
+
+.container {
+  border: 2px solid black;
+  width: 500px;
+  height: 500px;
+}
+
+.cell {
+  width: 50px;
+  height: 50px;
+  border: 1px solid black;
+  float: left;
+  box-sizing: border-box;
+  background-color: #c0c0c0;
+  user-select: none;
+}
+
+.active {
+  box-shadow: -2px -2px 0 1px #8c8c8c inset, 2px 2px 0 1px white inset;
+}
+
+.pressed {
+  border: 2px solid #8d9095;
+  background-color: #d8d8d8;
+  box-shadow: none;
+}
+
+.mine {
+  background-image: url('./img/mine.png');
+  background-position: center;
+  background-size: cover;
+  background-size: 30px;
+  background-repeat: no-repeat;
+  box-shadow: none;
+}
+
+.mine-clicked {
+  border: 2px solid red;
+  background-color: red;
+}
+
+.options {
+  width: 500px;
+  height: 40px;
+  display: flex;
+  justify-content: flex-start;
+  font-size: 26px;
+  font-weight: bold;
+}
+
+.options p {
+  margin: 0px 20px;
+  padding-top: 3px;
+}
+
+.options p::first-letter {
+  text-decoration: underline;
+}
+
+.options p:hover {
+  background-color: #00a;
+  color: white;
+}
+
+.options,
+.gameinfo {
+  border-top: 2px solid black;
+  border-right: 2px solid black;
+  border-left: 2px solid black;
+}
+
+.gameinfo {
+  width: 500px;
+  height: 100px;
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 0;
+  background-color: #c0c0c0;
+}
+
+.face {
+  background-size: cover;
+  height: 100px;
+  width: 100px;
+}
+
+.happy {
+  background-image: url('./img/happy.png');
+}
+
+.sad {
+  background-image: url('./img/sad_new.png');
+}
+
+.minesnear {
+  font-size: 36px;
+  padding-left: 12.5px;
+  padding-top: 2.5px;
+  font-weight: bold;
+}
+
+.minesnear-1 {
+  color: blue;
+}
+.minesnear-2 {
+  color: green;
+}
+.minesnear-3 {
+  color: red;
+}
+.minesnear-4 {
+  color: #292994;
+}
+.minesnear-5 {
+  color: #7e0000;
+}
+.minesnear-6 {
+  color: green;
+}
+.minesnear-7 {
+  color: #040300;
+}
+.minesnear-8 {
+  color: #808080;
+}
+
+.flag {
+  background-color: green;
+}
