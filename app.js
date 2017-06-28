@@ -1,4 +1,5 @@
 var game;
+var interval;
 
 $(document).ready(function() {
 
@@ -18,6 +19,33 @@ $(document).ready(function() {
   });
 
   game.createRandomMinePositions();
-  //start timer here
+  startTimer();
+  showMineCount(leftZeroPadder(game.totalMines));
 
 });
+
+function startTimer() {
+  var timerDisplay = document.querySelector('.timeticker');
+  var counter = -1; //smoother ui experience with new game
+
+  clearInterval(interval);
+
+  interval = setInterval(function() {
+    counter += 1;
+    if (counter === 999) {
+      clearInterval(interval);
+    }
+    timerDisplay.textContent = leftZeroPadder(counter);
+  }, 1000);
+}
+
+function leftZeroPadder(number) {
+  if (number >= 10 && number <= 99) return '0' + number;
+  if (number < 10) return '00' + number;
+  return number;
+}
+
+function showMineCount(totalMines) {
+  var minesLeftDisplay = document.querySelector('.minesleft');
+  minesLeftDisplay.textContent = totalMines;
+}

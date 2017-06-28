@@ -1,5 +1,19 @@
+@font-face {
+  font-family: 'digital';
+  src: url('./fonts/digital.ttf');
+}
+
 body {
   font-family: 'Arial'
+}
+
+.minesleft,
+.timeticker {
+  font-family: 'digital';
+  font-size: 100px;
+  color: red;
+  background-color: black;
+  height: 80px;
 }
 
 .container {

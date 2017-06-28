@@ -33,7 +33,7 @@ Minesweeper.prototype.newGame = function() {
   this.minesFlagged = 0;
   this.totalMines = 0;
   this.createRandomMinePositions();
-
+  startTimer();
 };
 
 Minesweeper.prototype.clickCell = function(elem) {
@@ -204,9 +204,11 @@ Minesweeper.prototype.flagMine = function(cell) {
   if ($(selector).hasClass('flag')) {
     $(selector).removeClass('flag');
     this.minesFlagged -= 1;
+    showMineCount(leftZeroPadder(game.totalMines - this.minesFlagged));
   } else {
     $(selector).addClass('flag');
     this.minesFlagged += 1;
+    showMineCount(leftZeroPadder(game.totalMines - this.minesFlagged));
   }
 
   var timeout = setTimeout(function(){
