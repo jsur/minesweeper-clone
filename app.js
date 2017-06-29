@@ -18,7 +18,7 @@ $(document).ready(function() {
     }
   });
 
-  game.createRandomMinePositions();
+  game.newGame();
   startTimer();
   showMineCount(leftZeroPadder(game.totalMines));
 
@@ -49,3 +49,20 @@ function showMineCount(totalMines) {
   var minesLeftDisplay = document.querySelector('.minesleft');
   minesLeftDisplay.textContent = totalMines;
 }
+
+/*
+function chooseDifficulty(difficulty) {
+  if (difficulty === 'hard') {
+    game.rows = 40;
+    game.columns = 40;
+
+  }
+  if (difficulty === 'medium') {
+    game.rows = 25;
+    game.columns = 25;
+  }
+  if (difficulty === 'easy') {
+    game.rows = 10;
+    game.columns = 10;
+  }
+}*/

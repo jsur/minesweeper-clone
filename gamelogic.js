@@ -1,11 +1,14 @@
 function Minesweeper() {
 
+  this.rows = 10;
+  this.columns = 10;
+
   this.points = 0;
   this.minesFlagged = 0;
   this.totalMines = 0;
 
-  for (var row = 0; row < 10; row++) {
-    for (var col = 0; col < 10; col++) {
+  for (var row = 0; row < this.rows; row++) {
+    for (var col = 0; col < this.columns; col++) {
       $('.container').append($('<div>')
         .addClass('cell active')
         .attr('data-row', row)
@@ -18,7 +21,7 @@ function Minesweeper() {
 Minesweeper.prototype.newGame = function() {
   //remove unnecessary classes
   $('.cell').removeClass('mine pressed minesnear mine-clicked flag');
-  for (var i = 0; i <= 10; i++) {
+  for (var i = 0; i <= this.totalMines; i++) {
     $('.cell').removeClass('minesnear-' + i);
   }
   //remove numbers
@@ -32,8 +35,15 @@ Minesweeper.prototype.newGame = function() {
   this.points = 0;
   this.minesFlagged = 0;
   this.totalMines = 0;
+
   this.createRandomMinePositions();
-  startTimer();
+  showMineCount(leftZeroPadder(game.totalMines));
+
+  // Dynamic width and height for containers
+  var dimension = this.rows * 50; //Each cell is 50px wide & high
+  $('.container, .gameinfo, .options').css('width', dimension);
+  $('.container').css('height', dimension);
+
 };
 
 Minesweeper.prototype.clickCell = function(elem) {
@@ -137,19 +147,19 @@ Minesweeper.prototype.getAdjacentCellCoordinates = function(x, y) {
     //above
     if ((x-1) >= 0) coordinateArray.push([x-1, y]);
     //above and right
-    if ((x-1) >= 0 && (y+1) < 10) coordinateArray.push([x-1, y+1]);
+    if ((x-1) >= 0 && (y+1) < this.columns) coordinateArray.push([x-1, y+1]);
     //above and left
     if ((x-1) >= 0 && (y-1) >= 0) coordinateArray.push([x-1, y-1]);
     //left
     if ((y-1) >= 0) coordinateArray.push([x, y-1]);
     //right
-    if ((y+1) < 10) coordinateArray.push([x, y+1]);
+    if ((y+1) < this.columns) coordinateArray.push([x, y+1]);
     //below
-    if ((x+1 < 10)) coordinateArray.push([x+1, y]);
+    if ((x+1 < this.rows)) coordinateArray.push([x+1, y]);
     //below and right
-    if ((x+1) < 10 && (y+1) < 10) coordinateArray.push([x+1, y+1]);
+    if ((x+1) < this.rows && (y+1) < this.columns) coordinateArray.push([x+1, y+1]);
     //below and left
-    if ((x+1) < 10 && (y-1) >= 0) coordinateArray.push([x+1, y-1]);
+    if ((x+1) < this.rows && (y-1) >= 0) coordinateArray.push([x+1, y-1]);
 
     return coordinateArray;
 };
@@ -159,15 +169,25 @@ Minesweeper.prototype.createRandomMinePositions = function() {
   //first remove all old mines so that newGame button will work
   $('.cell').removeClass('has-mine');
 
-  for (var row = 0; row < 10; row++) {
+  for (var row = 0; row < this.rows; row++) {
     var array = [];
-    for (var col = 0; col < 10; col++) {
+    for (var col = 0; col < this.columns; col++) {
       array.push(col);
     }
+
     var randomY = (this.randomNum(array));
     //at least there's one mine on each row
     //maybe I'll make a better algorithm one day
     $('[data-row=' + row + ']' + '[data-col=' + randomY + ']').addClass('has-mine');
+
+    //hack hack hack
+    if (this.rows >= 25) {
+      this.createMoreMines(3, row, array);
+    }
+    //hack hack hack
+    if (this.rows >= 40) {
+      this.createMoreMines(4, row, array);
+    }
     this.totalMines += 1;
   }
 };
@@ -231,7 +251,15 @@ Minesweeper.prototype.checkFlaggedMineCoordinates = function() {
     }
   });
 
-  var gamewon = win === 10 ? true : false;
+  var gamewon = win === this.totalMines ? true : false;
   return gamewon;
 
+};
+
+Minesweeper.prototype.createMoreMines = function(times, row, array) {
+  for (var i = 0; i <= times; i++) {
+    var randY = (this.randomNum(array));
+    $('[data-row=' + row + ']' + '[data-col=' + randY + ']').addClass('has-mine');
+    this.totalMines += 1;
+  }
 };

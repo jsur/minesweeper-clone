@@ -6,16 +6,24 @@
     <title>Minesweeper</title>
   </head>
   <body oncontextmenu="return false;">
-    <div class="options">
-      <p class="game-option">Game</p>
-      <p class="help-option">Help</p>
+    <!--<div class="difficulty">
+        <input type="radio" name="difficulty" value="easy"> Easy<br>
+        <input type="radio" name="difficulty" value="medium"> Medium<br>
+        <input type="radio" name="difficulty" value="hard"> Hard
+      <button class="start-button" type="button" name="startbutton">Start</button>
+    </div>-->
+    <div class="game-container">
+      <div class="options">
+        <p class="game-option">Game</p>
+        <p class="help-option">Help</p>
+      </div>
+      <div class="gameinfo">
+        <div class="minesleft">000</div>
+        <div class="face happy"></div>
+        <div class="timeticker">000</div>
+      </div>
+      <div class="container"></div>
     </div>
-    <div class="gameinfo">
-      <div class="minesleft">000</div>
-      <div class="face happy"></div>
-      <div class="timeticker">000</div>
-    </div>
-    <div class="container"></div>
   </body>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script type="text/javascript" src="gamelogic.js"></script>

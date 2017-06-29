@@ -3,8 +3,20 @@
   src: url('./fonts/digital.ttf');
 }
 
+html, body {
+  height: 100%;
+}
+
 body {
-  font-family: 'Arial'
+  font-family: 'Arial';
+  background-image: url('./img/win_95.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 100%;
+}
+
+.game-container {
+  margin: 15% 35%;
 }
 
 .minesleft,
@@ -18,8 +30,6 @@ body {
 
 .container {
   border: 2px solid black;
-  width: 500px;
-  height: 500px;
 }
 
 .cell {
@@ -63,6 +73,7 @@ body {
   justify-content: flex-start;
   font-size: 26px;
   font-weight: bold;
+  background-color: white;
 }
 
 .options p {
@@ -146,4 +157,14 @@ body {
   background-position: center;
   background-size: 25px;
   background-repeat: no-repeat;
+}
+
+.start-button {
+  display: block;
+  margin-top: 15px;
+}
+
+.difficulty {
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
