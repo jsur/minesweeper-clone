@@ -38,6 +38,7 @@ Minesweeper.prototype.newGame = function() {
 
   this.createRandomMinePositions();
   showMineCount(leftZeroPadder(game.totalMines));
+  startTimer();
 
   // Dynamic width and height for containers
   var dimension = this.rows * 50; //Each cell is 50px wide & high

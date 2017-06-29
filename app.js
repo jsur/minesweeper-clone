@@ -19,7 +19,6 @@ $(document).ready(function() {
   });
 
   game.newGame();
-  startTimer();
   showMineCount(leftZeroPadder(game.totalMines));
 
 });
